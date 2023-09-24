@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -6,7 +8,7 @@ class CustomButton extends StatelessWidget {
   BoxShape? btnShape;
   Gradient? btnGradColor;
   Color? btnColor;
-  double btnElevation;
+  double? btnElevation;
   Function onTap;
   bool isLoading = false;
   bool isSuccess = false;
@@ -14,7 +16,7 @@ class CustomButton extends StatelessWidget {
     required this.title,
     required this.onTap,
     this.txtColor,
-    this.btnElevation = 0.0,
+    this.btnElevation,
     this.btnShape,
     this.btnGradColor,
     this.btnColor,
@@ -29,7 +31,8 @@ class CustomButton extends StatelessWidget {
         onTap.call();
       },
       child: Card(
-        elevation: btnElevation,
+        shadowColor: Colors.green.shade900,
+        elevation: btnElevation ?? 0.0,
         child: Container(
           width: double.infinity,
           height: btnShape == BoxShape.circle ? 80 : 50,
@@ -66,3 +69,43 @@ class CustomButton extends StatelessWidget {
     );
   }
 }
+
+
+class HexagonalPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.blue
+      ..style = PaintingStyle.fill;
+
+    final double radius = size.width / 2;
+    final double centerX = size.width / 2;
+    final double centerY = size.height / 2;
+
+    final double angle = 360 / 6; // 360 degrees divided by 6 sides
+
+    Path path = Path();
+
+    for (int i = 0; i < 6; i++) {
+      final double x = centerX + radius * cos(degToRad(i * angle));
+      final double y = centerY + radius * sin(degToRad(i * angle));
+      if (i == 0) {
+        path.moveTo(x, y);
+      } else {
+        path.lineTo(x, y);
+      }
+    }
+
+    path.close();
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
+  }
+
+  double degToRad(double degrees) {
+    return degrees * (pi / 180);
+  }}
