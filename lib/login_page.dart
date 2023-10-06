@@ -1,11 +1,8 @@
 import 'dart:async';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'custom_button.dart';
-import 'dataScreen.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -101,6 +98,8 @@ class _LoginPageState extends State<LoginPage> {
                   child: CustomButton(
                     isLoading: isLoad,
                     isSuccess: isDone,
+                    isHexagonal: true,
+                    shapePath: 4,
                     btnElevation: isLoad ? 0 : 15,
                     title: 'Login',
                     // btnShape: BoxShape.circle,
@@ -133,20 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                             end: Alignment.bottomRight,
                             colors: [Colors.deepPurple, Colors.deepOrange])
                         : null,
-                  ))
-              // CupertinoButton.filled(
-              //     onPressed: () {
-              //       if(_formKey.currentState!.validate()){
-              //         Navigator.push(context,
-              //             MaterialPageRoute(builder: (context) =>
-              //                 DataScreen(userName: _userC.text, password: _passC.text)));
-              //       }
-              //       setState(() {});
-              //     },
-              //     child: const Text("Log In")),
-              // const SizedBox(height: 40,),
-              // Text(_userC.text),
-              // Text(_passC.text),
+                  )),
             ],
           ),
         ),
