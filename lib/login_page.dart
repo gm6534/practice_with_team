@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:practice_with_team/hexagon_shape.dart';
 
 import 'custom_button.dart';
 import 'dataScreen.dart';
@@ -96,44 +97,97 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 40,
               ),
+              // SizedBox(
+              //     width: 300,
+              //     child: CustomButton(
+              //       isLoading: isLoad,
+              //       isSuccess: isDone,
+              //       btnElevation: isLoad ? 0 : 15,
+              //       title: 'Login',
+              //       // btnShape: BoxShape.circle,
+              //       onTap: (isLoad || isDone)
+              //           ? () {}
+              //           : () {
+              //               print("=========onTap Custom Button========");
+              //               isLoad = true;
+              //               Future.delayed(const Duration(seconds: 3), () {
+              //                 setState(() {
+              //                   isLoad = false;
+              //                 });
+              //               }).whenComplete(() => isDone = true).whenComplete(
+              //                   () => Future.delayed(const Duration(seconds: 2),
+              //                           () {
+              //                         setState(() {
+              //                           isDone = false;
+              //                         });
+              //                       }));
+              //               setState(() {});
+              //             },
+              //       btnColor: isDone == true
+              //           ? Colors.green
+              //           : isLoad
+              //               ? Colors.grey.shade400
+              //               : null,
+              //       btnGradColor: (isLoad || isDone) == false
+              //           ? const LinearGradient(
+              //               begin: Alignment.topLeft,
+              //               end: Alignment.bottomRight,
+              //               colors: [Colors.deepPurple, Colors.deepOrange])
+              //           : null,
+              //
+              //     )),
+              // ---------------Azeem Code ---------------------
               SizedBox(
-                  width: 300,
-                  child: CustomButton(
-                    isLoading: isLoad,
-                    isSuccess: isDone,
-                    btnElevation: isLoad ? 0 : 15,
-                    title: 'Login',
-                    // btnShape: BoxShape.circle,
-                    onTap: (isLoad || isDone)
-                        ? () {}
-                        : () {
-                            print("=========onTap Custom Button========");
-                            isLoad = true;
-                            Future.delayed(const Duration(seconds: 3), () {
-                              setState(() {
-                                isLoad = false;
-                              });
-                            }).whenComplete(() => isDone = true).whenComplete(
-                                () => Future.delayed(const Duration(seconds: 2),
-                                        () {
-                                      setState(() {
-                                        isDone = false;
-                                      });
-                                    }));
-                            setState(() {});
-                          },
-                    btnColor: isDone == true
-                        ? Colors.green
-                        : isLoad
-                            ? Colors.grey.shade400
-                            : null,
-                    btnGradColor: (isLoad || isDone) == false
-                        ? const LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [Colors.deepPurple, Colors.deepOrange])
-                        : null,
-                  ))
+                height: 100,
+                width: 150,
+                child: CustomHexagonButton(
+                  isLoading: isLoad,
+                  isSuccess:  isDone,
+                  title: "Hexagon",
+                  // gradientColors: [Colors.deepOrange, Colors.tealAccent],
+
+                  size: 2, onTap:  (){
+                // (isLoad || isDone)
+                //           // ? () {}
+                //           // : () {
+                              print("=========onTap Custom Button========");
+                              isLoad = true;
+                              Future.delayed(const Duration(seconds: 3), () {
+                                setState(() {
+                                  isLoad = false;
+                                });
+                              }).whenComplete(() => isDone = true).whenComplete(
+                                  () => Future.delayed(const Duration(seconds: 2),
+                                          () {
+                                        setState(() {
+                                          isDone = false;
+                                        });
+                                      }));
+                              setState(() {});
+                            },
+                      btnColor: isDone == true
+                          ? Colors.green
+                          : isLoad
+                              ? Colors.grey.shade400
+                              : null,
+                  gradientColors: (isLoad || isDone) == false
+                      ?[Colors.deepPurple, Colors.deepOrange]
+                      : null,
+
+                ),
+
+              ),
+
+
+              // SizedBox(height: 30,
+              //   child: HexagonButton(size: 2, title: "Hexagon", onTap: (){
+              //
+              //     print("=========onTap Custom Button========");
+              //     setState(() {
+              //
+              //     });
+              //   }, isLoading: false, isSuccess: false),
+              // )
               // CupertinoButton.filled(
               //     onPressed: () {
               //       if(_formKey.currentState!.validate()){
