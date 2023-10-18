@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_with_team/toast.dart';
 
 import 'login_page.dart';
 //Azeem Code-----------Updated by GhulamMustafa---
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginPage(),
+      home:  LoginPage(),
     );
   }
 }
